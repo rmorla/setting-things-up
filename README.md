@@ -2,6 +2,16 @@
 
 ## GPU passthrough
 
+### enable VT-x on the motherboard
+
+### kernel enable IOMMU
+
+cd /etc/default/grub.d/
+
+vi iommu.cfg
+>> GRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} intel_iommu=on"
+
+reboot
 
 ## Adding disk (vm 9001, 150GB)
 
