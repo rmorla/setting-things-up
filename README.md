@@ -1,8 +1,14 @@
 # Proxmox
 
+## 'flash' the usb 
+
+https://pve.proxmox.com/wiki/Prepare_Installation_Media
+
 ## GPU passthrough
 
 ### enable VT-x on the motherboard
+
+Boot into BIOS configuration and change virtualization setting.
 
 ### kernel enable IOMMU
 
@@ -13,9 +19,16 @@ vi iommu.cfg
 
 reboot
 
-### assign gpu to vm
+### assign gpu to vm (and disable GPU vga - defaults to virtualization vga)
 
 qm set 9001 -hostpci0 01:00,x-vga=off
+
+### hide virtualization from guest (for NVIDIA drivers)
+
+vi /etc/pve/qemu-server/9001.conf
+>> cpu: host,hidden=1
+
+### install NVIDIA drivers on guest
 
 
 ## Adding disk (vm 9001, 150GB)
@@ -50,3 +63,38 @@ sudo vim /etc/fstab
 >> UUID=b22a9200-5665-4eb7-b9b5-1a031e0fe525 /mounted_folder ext4  defaults    0    0
 
 sudo mount /mounted_folder
+
+
+# Setting up tensorflow on docker
+
+https://www.tensorflow.org/install/docker
+https://docs.docker.com/engine/install/ubuntu/
+
+## docker 
+
+### install
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+sudo docker run hello-world
+
+### allow non-sudo usage
+
+https://docs.docker.com/engine/install/linux-postinstall/
+
