@@ -73,7 +73,7 @@ sudo mount /mounted_folder
 https://www.tensorflow.org/install/docker
 https://docs.docker.com/engine/install/ubuntu/
 
-## allow the proxmox vm to get access to AVX instructions
+## allow the proxmox vm to get access to AVX instructions (for tensorflow)
 
 vi /etc/pve/qemu-server/9001.conf
 >> cpu: host
@@ -116,5 +116,11 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.
 docker pull tensorflow/tensorflow
 
 docker run -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
+## customized dockerfile
+
+docker-tensorflow-1.15.4-py3-jupyter
+>> FROM tensorflow/tensorflow:1.15.4-py3-jupyter
+>> RUN pip install --upgrade tldextract
 
 
