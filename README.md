@@ -13,6 +13,11 @@ vi iommu.cfg
 
 reboot
 
+### assign gpu to vm
+
+qm set 9001 -hostpci0 01:00,x-vga=off
+
+
 ## Adding disk (vm 9001, 150GB)
 
 ### proxmox
