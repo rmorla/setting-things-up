@@ -1,0 +1,35 @@
+FROM tensorflow/tensorflow:1.15.4-py3-jupyter
+
+# top level domains
+RUN pip install --upgrade tldextract
+
+# tcpdump
+RUN apt-get update && apt-get install -y tcpdump
+
+# wget
+#RUN apt-get update && apt-get install -y python-pip python-dev build-essential wget
+RUN apt-get update && apt-get install -y wget
+
+# ASN number mapping
+RUN apt-get install -y python3 python3-pip python3-dev build-essential
+RUN pip3 install --upgrade pyasn --pre
+
+# tstat
+RUN apt-get update \
+    && apt-get install -y libpcap-dev subversion autoconf libtool make g++
+#RUN cd /root/ && svn checkout http://tstat.polito.it/svn/software/tstat/trunk tstat
+RUN cd /root/ && wget http://tstat.polito.it/download/tstat-3.1.1.tar.gz
+RUN cd /root/ && tar -xzvf tstat-3.1.1.tar.gz && mv /root/tstat-3.1.1 /root/tstat
+RUN cd /root/tstat && ./autogen.sh && ./configure \
+    && make && make install
+RUN cd /root/ && rm -rdf tstat && mkdir /data
+WORKDIR /data/
+RUN apt-get install -y curl wget sed unzip
+
+# joy
+
+RUN apt-get install -y build-essential libssl-dev libpcap-dev libcurl4-openssl-dev git
+RUN apt-get install zlib1g-dev
+RUN cd /root/ && git clone https://github.com/cisco/joy.git
+RUN cd /root/joy && ./configure --enable-gzip
+RUN cd /root/joy && make clean;make
