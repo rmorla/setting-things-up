@@ -9,6 +9,9 @@
 
 pvesm alloc local-lvm 9001 vm-9001-diskname 150G
 
+pvesm list local-lvm
+pvesm path local-lvm:vm-9001-diskname
+
 vi /etc/pve/qemu-server/9001.conf
 >> scsi1: local-lvm:vm-9001-diskname.raw,size=150G
 
