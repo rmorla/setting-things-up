@@ -120,7 +120,10 @@ docker run -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; pr
 ## customized dockerfile
 
 docker-tensorflow-1.15.4-py3-jupyter
+
 >> FROM tensorflow/tensorflow:1.15.4-py3-jupyter
+
 >> RUN pip install --upgrade tldextract
 
+## see networktools dockerfile
 
