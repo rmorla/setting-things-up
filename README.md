@@ -119,11 +119,25 @@ docker run -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; pr
 
 ## customized dockerfile
 
+### create dockerfile 
+
 docker-tensorflow-1.15.4-py3-jupyter
 
 >> FROM tensorflow/tensorflow:1.15.4-py3-jupyter
 
 >> RUN pip install --upgrade tldextract
 
-## see networktools dockerfile
+###  another example 
+
+see file: tensorflow-networktools
+
+### build container image
+
+docker build -t tf-1.15.4-py3-jupyter-networktools - < tensorflow-networktools
+
+### run 
+
+docker run -d --rm --name mycontainername --mount type=bind,source=/host/path,target=/container/path -p 8888:8888 tf-1.15.4-py3-jupyter-networktools 
+
+docker exec mycontainername jupyter notebook list
 
