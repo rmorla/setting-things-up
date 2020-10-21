@@ -94,6 +94,9 @@ sudo docker run hello-world
 
 https://docs.docker.com/engine/install/linux-postinstall/
 
+Manage Docker as a non-root user
+
+Configure Docker to start on boot
 
 # GPU for tensorflow on docker
 
