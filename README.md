@@ -73,6 +73,11 @@ sudo mount /mounted_folder
 https://www.tensorflow.org/install/docker
 https://docs.docker.com/engine/install/ubuntu/
 
+## allow the proxmox vm to get access to AVX instructions
+
+vi /etc/pve/qemu-server/9001.conf
+>> cpu: host
+
 ## docker 
 
 ### install
@@ -98,8 +103,18 @@ Manage Docker as a non-root user
 
 Configure Docker to start on boot
 
-# GPU for tensorflow on docker
+## GPU on docker
 
 If you didn't install it when configuring the GPU passthrough:
 https://www.tensorflow.org/install/gpu
+
+NVIDIA docker support:
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
+
+## docker tensorflow
+
+docker pull tensorflow/tensorflow
+
+docker run -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
 
