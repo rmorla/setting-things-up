@@ -30,8 +30,11 @@ vi /etc/pve/qemu-server/9001.conf
 
 ### install NVIDIA drivers on guest
 
+https://www.tensorflow.org/install/gpu
 
 ## Adding disk (vm 9001, 150GB)
+
+https://pve.proxmox.com/wiki/Storage
 
 ### proxmox
 
@@ -90,4 +93,10 @@ sudo docker run hello-world
 ### allow non-sudo usage
 
 https://docs.docker.com/engine/install/linux-postinstall/
+
+
+# GPU for tensorflow on docker
+
+If you didn't install it when configuring the GPU passthrough:
+https://www.tensorflow.org/install/gpu
 
