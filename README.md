@@ -67,6 +67,21 @@ sudo vim /etc/fstab
 
 sudo mount /mounted_folder
 
+## setting up a cluster
+
+https://pve.proxmox.com/wiki/Cluster_Manager
+
+edit /etc/hosts or other means for name resolution
+
+on the cluster head:
+
+$ pvecm create clustername
+
+on the node that you want to join the cluster (warning: will delete images on new node)
+
+$ pvecm add IPADDR_CLUSTERHEAD
+
+
 
 # Setting up tensorflow on docker
 
