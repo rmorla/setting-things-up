@@ -49,7 +49,7 @@ Bob deleted Alice's file.
 
 ### role play 3 -- MITM
 
-Bob perfo
+Bob performed a mitm on the openssh server
 
 >> Alice complains about not being able to access the server 
 
@@ -64,6 +64,8 @@ Bob perfo
 >> Take down MITM server
 
 ### role play 4 -- exfiltration / USB
+
+Bob managed to connect a USB device on the server
 
 >> Alice's document /users/alice/doc3 appeared on the internet
 
