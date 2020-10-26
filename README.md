@@ -17,6 +17,8 @@ cd /etc/default/grub.d/
 vi iommu.cfg
 >> GRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} intel_iommu=on"
 
+update-grub
+
 reboot
 
 ### assign gpu to vm (and disable GPU vga - defaults to virtualization vga)
