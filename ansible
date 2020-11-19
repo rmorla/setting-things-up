@@ -1,0 +1,11 @@
+
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-20-04
+
+sudo apt update
+sudo apt install -y ansible
+sudo vim /etc/ansible/hosts 
+>> [servers]
+>> ip/names
+# make sure ssh authentication works with key pair (try ssh with key) 
+
+
