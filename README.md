@@ -71,10 +71,13 @@ sudo mount /mounted_folder
 
 ### disk/by-id
 
-ls -sal /dev/disk/by-id
+https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM)
 
-Add new 'Hard disk / scsi' on VM config / proxmox gui
+find disk id
+>> ls -sal /dev/disk/by-id
 
+assign disk xxxxx to VM nnn
+qm set nnn -scsi1 /dev/disk/by-id/xxxxx-disk-id-xxxxxxx
 
 ## setting up a cluster
 
