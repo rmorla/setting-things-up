@@ -77,7 +77,7 @@ find disk id
 >> ls -sal /dev/disk/by-id
 
 assign disk xxxxx to VM nnn
-qm set nnn -scsi1 /dev/disk/by-id/xxxxx-disk-id-xxxxxxx
+>> qm set nnn -scsi1 /dev/disk/by-id/xxxxx-disk-id-xxxxxxx
 
 ## setting up a cluster
 
