@@ -69,6 +69,13 @@ sudo vim /etc/fstab
 
 sudo mount /mounted_folder
 
+### disk/by-id
+
+ls -sal /dev/disk/by-id
+
+Add new 'Hard disk / scsi' on VM config / proxmox gui
+
+
 ## setting up a cluster
 
 https://pve.proxmox.com/wiki/Cluster_Manager
