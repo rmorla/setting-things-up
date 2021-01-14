@@ -79,6 +79,20 @@ find disk id
 assign disk xxxxx to VM nnn
 >> qm set nnn -scsi1 /dev/disk/by-id/xxxxx-disk-id-xxxxxxx
 
+### lvm extend
+
+check VG name and free size
+>> sudo vgdisplay
+
+extend VG size (check which lv under /dev/ubuntu-vg)
+>> sudo lvextend -l +6015 /dev/ubuntu-vg/ubuntu-lv
+
+resize filesystem
+>> sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+
+check new size
+>> df
+
 ## setting up a cluster
 
 https://pve.proxmox.com/wiki/Cluster_Manager
