@@ -4,11 +4,19 @@
 
 https://pve.proxmox.com/wiki/Prepare_Installation_Media
 
+## setup BIOS
+
+Boot into BIOS. CPU / Intel VMX Virtualization Technology.
+
 ## GPU passthrough
+
+### use internal graphics as primary display
+
+Boot into BIOS. Go to Graphics Configuration, Primary Display, choose IGFX / iGPU for internal graphics.
 
 ### enable VT-x on the motherboard
 
-Boot into BIOS configuration and change virtualization setting.
+Boot into BIOS. Enable VT-x (System Agent).
 
 ### kernel enable IOMMU
 
