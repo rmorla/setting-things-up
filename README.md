@@ -190,3 +190,7 @@ docker run -d --rm --name mycontainername --mount type=bind,source=/host/path,ta
 
 docker exec mycontainername jupyter notebook list
 
+
+# If you're venturing on the Windows path...
+
+https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers
