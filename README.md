@@ -46,8 +46,6 @@ https://www.tensorflow.org/install/gpu
 
 https://pve.proxmox.com/wiki/USB_Devices_in_Virtual_Machines
 
-lsusb
-
 usb-devices
 
 host=8-2 => 8: bus, 2 cnt -- this can be seen on the output of usb-devices
@@ -55,7 +53,7 @@ host=8-2 => 8: bus, 2 cnt -- this can be seen on the output of usb-devices
 >>T:  Bus=08 Lev=01 Prnt=01 Port=01 Cnt=02 Dev#=  8 Spd=12  MxCh= 0
 
 vi /etc/pve/qemu-server/9001.conf
->> usb0: host=8-0
+>> usb0: host=8-2
 
 
 
