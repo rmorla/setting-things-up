@@ -116,6 +116,26 @@ resize filesystem
 check new size
 >> df
 
+### importing proxmox disk from another host
+
+rename: find vg_UUID, then change name
+>> vgdisplay
+>> vgrename vg_UUID new_vg_name
+
+deactivate/activate vg -- this will create entries under /dev/vg
+>> vgchange -an new_vg_name
+>> vgchange -a y new_vg_name
+
+add proxmox storage
+>> nano /etc/pve/storage.cfg 
+>>> lvmthin: local-lvm-newname
+>>>        thinpool data
+>>>        vgname new_vg_name
+>>>        content rootdir,images
+
+
+
+
 ## setting up a cluster
 
 https://pve.proxmox.com/wiki/Cluster_Manager
