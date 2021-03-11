@@ -126,7 +126,7 @@ rename: find vg_UUID, then change name
 deactivate/activate vg -- this will create entries under /dev/vg
 > vgchange -an new_vg_name
 >
-> vgchange -a y new_vg_name
+> vgchange -ay new_vg_name
 
 add proxmox storage
 > nano /etc/pve/storage.cfg 
@@ -140,6 +140,17 @@ add proxmox storage
 >>        content rootdir,images
 
 
+## cloud init
+
+> wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+
+> qm importdisk vmid focal-server-cloudimg-amd64.img local-lvm
+
+add cloudinit drive
+
+expand disc to target size (proxmox gui)
+
+edit vm configs /etc/pve/qemu-server/vmid.conf
 
 
 ## setting up a cluster
