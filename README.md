@@ -120,6 +120,7 @@ check new size
 
 rename: find vg_UUID, then change name
 > vgdisplay
+> 
 > vgrename vg_UUID new_vg_name
 
 deactivate/activate vg -- this will create entries under /dev/vg
