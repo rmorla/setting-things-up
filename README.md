@@ -168,7 +168,6 @@ on the node that you want to join the cluster (warning: will delete images on ne
 $ pvecm add IPADDR_CLUSTERHEAD
 
 
-
 # Setting up tensorflow on docker
 
 https://www.tensorflow.org/install/docker
@@ -202,7 +201,23 @@ https://docs.docker.com/engine/install/linux-postinstall/
 
 Manage Docker as a non-root user
 
+> sudo usermod -aG docker $USER
+
 Configure Docker to start on boot
+
+### registry access
+
+#### http registry (insecure)
+
+edit /etc/docker/daemon.json, add registry ip and port:
+>> {
+>>  "insecure-registries" : ["10.1.1.1:5000"]
+>> }
+>> 
+#### https registry (secure)
+
+copy registry certificate to /etc/docker/certs.d/ using the ip and port number in the folder and filename (use \: to escape the semicolon for the port)
+>> /etc/docker/certs.d/1.1.1.1\:5000/registry.crt
 
 ## GPU on docker
 
