@@ -130,6 +130,9 @@ Fix/Ignore? F
 
 resizepart 3 100%
 
+pvresize
+
+then lvextend (see above)
 
 ## importing proxmox disk from another host
 
