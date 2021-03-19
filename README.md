@@ -116,6 +116,21 @@ resize filesystem
 check new size
 >> df
 
+### resize disks
+
+https://pve.proxmox.com/wiki/Resize_disks
+
+fdisk -l 
+
+parted /dev/sda
+
+print
+
+Fix/Ignore? F
+
+resizepart 3 100%
+
+
 ## importing proxmox disk from another host
 
 rename: find vg_UUID, then change name
