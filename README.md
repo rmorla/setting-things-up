@@ -42,6 +42,15 @@ vi /etc/pve/qemu-server/9001.conf
 
 https://www.tensorflow.org/install/gpu
 
+
+ubuntu 20.04
+
+$ sudo apt update
+
+$ sudo apt install nvidia-driver-460
+
+$ sudo apt install nvidia-utils-460
+
 ## USB passthrough
 
 https://pve.proxmox.com/wiki/USB_Devices_in_Virtual_Machines
