@@ -258,7 +258,7 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.
 
 docker pull tensorflow/tensorflow
 
-docker run -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+docker run --gpus=all -it --rm tensorflow/tensorflow python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 
 ## customized dockerfile
 
