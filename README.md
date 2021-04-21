@@ -61,6 +61,9 @@ host=8-2 => 8: bus, 2 cnt -- this can be seen on the output of usb-devices
 
 >>T:  Bus=08 Lev=01 Prnt=01 Port=01 Cnt=02 Dev#=  8 Spd=12  MxCh= 0
 
+cat /sys/bus/usb/devices/usb8/8-1/manufacturer
+
+
 vi /etc/pve/qemu-server/9001.conf
 >> usb0: host=8-2
 
