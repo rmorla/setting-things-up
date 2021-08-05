@@ -172,6 +172,8 @@ add proxmox storage
 
 ## cloud init
 
+first create a vm with empty disk
+
 > wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
 
 > qm importdisk vmid focal-server-cloudimg-amd64.img local-lvm
