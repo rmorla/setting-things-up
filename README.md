@@ -231,7 +231,7 @@ sudo docker run hello-world
 
 https://docs.docker.com/engine/install/linux-postinstall/
 
-- Manage Docker as a non-root user
+- Manage Docker as a non-root user (need to enter new terminal to have non-root 'docker ps' access)
 
 sudo usermod -aG docker $USER
 
@@ -254,6 +254,11 @@ edit /etc/docker/daemon.json, add registry ip and port:
 
 copy registry certificate to /etc/docker/certs.d/ using the ip and port number in the folder and filename (use \: to escape the semicolon for the port)
 >> /etc/docker/certs.d/1.1.1.1\:5000/registry.crt
+
+### swarm
+
+docker swarm init
+
 
 ## GPU on docker
 
