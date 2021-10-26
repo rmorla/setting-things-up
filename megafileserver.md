@@ -80,7 +80,7 @@ Bob managed to connect a USB device on the server
 
 ## role play 2021
 
-### role play 21.1 -- bruteforce / Mēris / Dirty Cow (thx D.Maia)
+### role play 21.1 -- bruteforce / Mēris / Dirty Cow (credits D.Maia)
 
 Brute force attack on Bob's account from a list of IPs that show up in shodan.io and associated to mikrotik and a botnet -- https://www.shodan.io/search?query=mikrotik
 
