@@ -227,6 +227,10 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 sudo docker run hello-world
 
+#### docker-compose (without swarm)
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
 ### allow non-sudo usage
 
 https://docs.docker.com/engine/install/linux-postinstall/
