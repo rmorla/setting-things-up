@@ -27,3 +27,8 @@
 :global etherid
 
 :for etherid from=2 to=24 step=1 do={ /interface bridge port remove numbers=[find interface="ether$etherid"] }
+
+#### create new bridge
+
+/interface bridge add name=br-client
+
