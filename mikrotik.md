@@ -22,7 +22,7 @@
 
 ## Config
 
-Remove all interfaces except ether1 from default bridge
+#### Remove all interfaces except ether1 from default bridge
 
 :global etherid
 
