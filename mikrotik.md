@@ -36,3 +36,11 @@
 
 /interface bridge add name=br-client
 
+#### assign ports to bridge
+
+:global etherid
+
+:for etherid from=17 to=24 step=1 do={ /interface bridge port add bridge=br-client numbers=[find interface="ether$etherid"] }
+
+
+
