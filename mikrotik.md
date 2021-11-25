@@ -1,3 +1,7 @@
+## Cleanup 
+
+/system reset-configuration
+
 ## Security
 
 #### telnet / serial
