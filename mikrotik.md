@@ -4,7 +4,7 @@
 
 ## Security
 
-#### telnet / serial
+#### part 1, over telnet / serial
 
 /user add name=USER group=full password=PWD
 
@@ -12,7 +12,8 @@
 
 /ip ssh set strong-crypto=yes
 
-#### ssh
+#### part 2, over ssh
+
 /ip service disable telnet,www,ftp,api,api-ssl,winbox
 
 /ip neighbor discovery-settings set discover-interface-list=none 
