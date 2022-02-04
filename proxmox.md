@@ -209,9 +209,10 @@ https://pve.proxmox.com/wiki/Cloud-Init_Support
 
 Download image from distribution
 
-https://cloud-images.ubuntu.com/ 
+- https://cloud-images.ubuntu.com/ 
 
-https://cloud.debian.org/images/cloud/
+- https://cloud.debian.org/images/cloud/
+
 
 >> wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
 
