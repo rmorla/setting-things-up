@@ -191,3 +191,9 @@ add proxmox storage
 >>        vgname new_vg_name
 >>        
 >>        content rootdir,images
+
+
+
+# If you're venturing on the Windows path...
+
+https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers
