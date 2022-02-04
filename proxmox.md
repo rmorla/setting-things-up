@@ -52,7 +52,7 @@ First see: Setup -- GPU passthrough
 
 qm set 9001 -hostpci0 01:00,x-vga=off
 
-# hide virtualization from guest (for NVIDIA drivers)
+## hide virtualization from guest (for NVIDIA drivers)
 
 vi /etc/pve/qemu-server/9001.conf
 >> cpu: host,hidden=1
@@ -70,6 +70,7 @@ $ sudo apt install nvidia-driver-460
 
 $ sudo apt install nvidia-utils-460
 
+
 # USB device on a VM
 
 https://pve.proxmox.com/wiki/USB_Devices_in_Virtual_Machines
@@ -85,6 +86,7 @@ cat /sys/bus/usb/devices/usb8/8-1/manufacturer
 
 vi /etc/pve/qemu-server/9001.conf
 >> usb0: host=8-2
+
 
 # Disk management
 
