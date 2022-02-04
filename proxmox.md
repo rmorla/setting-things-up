@@ -29,6 +29,16 @@ update-grub
 
 reboot
 
+## Proxmox apt update
+
+$ rm /etc/apt/sources.list.d/pve-enterprise.list
+
+$ echo "deb http://download.proxmox.com/debian buster pve-no-subscription" >> /etc/apt/sources.list
+
+$ apt update
+
+$ apt upgrade
+
 ## Cluster
 
 https://pve.proxmox.com/wiki/Cluster_Manager
