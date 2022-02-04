@@ -20,14 +20,15 @@ Boot into BIOS. Enable VT-x (System Agent).
 
 ### kernel enable IOMMU
 
-cd /etc/default/grub.d/
+>cd /etc/default/grub.d/
 
-vi iommu.cfg
+> vi iommu.cfg
+
 >> GRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} intel_iommu=on"
 
-update-grub
+> update-grub
 
-reboot
+> reboot
 
 ## Proxmox apt update
 
