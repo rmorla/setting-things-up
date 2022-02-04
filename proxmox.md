@@ -213,7 +213,7 @@ wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.i
 
 - Create VM
 
-qm create 9001 -memory 2048 -cores 2 -cpu host -onboot no  -ciuser theuser -sshkeys ~/test.rsa.pub -ipconfig0 ip=10.1.1.111/24,gw=10.1.1.1
+qm create 9001 -memory 2048 -cores 2 -cpu host -onboot no  -ciuser theuser -sshkeys ~/test.rsa.pub -ipconfig0 ip=10.1.1.111/24,gw=10.1.1.1 -net0 "virtio,bridge=vmbr0"
 
 cat /etc/pve/qemu-server/9001.conf
 
