@@ -196,6 +196,7 @@ deactivate/activate vg -- this will create entries under /dev/vg
 > vgchange -ay new_vg_name
 
 add proxmox storage
+
 > nano /etc/pve/storage.cfg 
 > 
 >> lvmthin: local-lvm-newname
