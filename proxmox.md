@@ -207,31 +207,35 @@ add proxmox storage
 
 https://pve.proxmox.com/wiki/Cloud-Init_Support
 
-- Download image from distribution, e.g. https://cloud-images.ubuntu.com/ https://cloud.debian.org/images/cloud/
+Download image from distribution
 
-wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+https://cloud-images.ubuntu.com/ 
 
-- Create VM
+https://cloud.debian.org/images/cloud/
 
-qm create 9001 -memory 2048 -cores 2 -cpu host -onboot no  -ciuser theuser -sshkeys ~/test.rsa.pub -ipconfig0 ip=10.1.1.111/24,gw=10.1.1.1 -net0 "virtio,bridge=vmbr0"
+>> wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
 
-cat /etc/pve/qemu-server/9001.conf
+Create VM
 
-- Import cloudimage disk into VM
+>> qm create 9001 -memory 2048 -cores 2 -cpu host -onboot no  -ciuser theuser -sshkeys ~/test.rsa.pub -ipconfig0 ip=10.1.1.111/24,gw=10.1.1.1 -net0 "virtio,bridge=vmbr0"
 
-qm importdisk 9001 focal-server-cloudimg-amd64.img local-lvm
+Import cloudimage disk into VM
 
-qm set 9001 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9001-disk-0 --boot c --bootdisk scsi0 --ide2 local-lvm:cloudinit
+>> qm importdisk 9001 focal-server-cloudimg-amd64.img local-lvm
 
-qm resize 9001 scsi0 +100G
+>> qm set 9001 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9001-disk-0 --boot c --bootdisk scsi0 --ide2 local-lvm:cloudinit
 
-- Start
+>> qm resize 9001 scsi0 +100G
 
-qm start 9001
+Start, stop
 
-- Destroy vm
+>> qm start 9001
 
-qm destroy 9001
+>> qm stop 9001
+
+Destroy vm
+
+>> qm destroy 9001
 
 # If you're venturing on the Windows path...
 
