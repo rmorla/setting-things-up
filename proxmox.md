@@ -31,13 +31,13 @@ reboot
 
 ## Proxmox apt update
 
-$ rm /etc/apt/sources.list.d/pve-enterprise.list
+rm /etc/apt/sources.list.d/pve-enterprise.list
 
-$ echo "deb http://download.proxmox.com/debian buster pve-no-subscription" >> /etc/apt/sources.list
+echo "deb http://download.proxmox.com/debian buster pve-no-subscription" >> /etc/apt/sources.list
 
-$ apt update
+apt update
 
-$ apt upgrade
+apt upgrade
 
 ## Cluster
 
@@ -96,7 +96,6 @@ cat /sys/bus/usb/devices/usb8/8-1/manufacturer
 
 vi /etc/pve/qemu-server/9001.conf
 >> usb0: host=8-2
-
 
 # Disk management
 
@@ -203,6 +202,36 @@ add proxmox storage
 >>        content rootdir,images
 
 
+
+# VM from cloudimage
+
+https://pve.proxmox.com/wiki/Cloud-Init_Support
+
+- Download image from distribution, e.g. https://cloud-images.ubuntu.com/ https://cloud.debian.org/images/cloud/
+
+wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+
+- Create VM
+
+qm create 9001 -memory 2048 -cores 2 -cpu host -onboot no  -ciuser theuser -sshkeys ~/test.rsa.pub -ipconfig0 ip=10.1.1.111/24,gw=10.1.1.1
+
+cat /etc/pve/qemu-server/9001.conf
+
+- Import cloudimage disk into VM
+
+qm importdisk 9001 focal-server-cloudimg-amd64.img local-lvm
+
+qm set 9001 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9001-disk-0 --boot c --bootdisk scsi0 --ide2 local-lvm:cloudinit
+
+qm resize 9001 scsi0 +100G
+
+- Start
+
+qm start 9001
+
+- Destroy vm
+
+qm destroy 9001
 
 # If you're venturing on the Windows path...
 
