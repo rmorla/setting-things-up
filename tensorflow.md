@@ -46,13 +46,15 @@ sudo systemctl enable containerd.service
 
 ## registry access
 
-docker run -d -p 5000:5000 --restart=always --name registry registry:2
 
 https://docs.docker.com/registry/insecure/
 
 ### http registry (insecure)
 
-edit /etc/docker/daemon.json, add registry ip and port:
+On the host that runs the registry
+>> docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+On every host edit /etc/docker/daemon.json, add registry ip and port:
 >> {
 >>  "insecure-registries" : ["10.1.1.1:5000"]
 >> }
@@ -60,19 +62,19 @@ edit /etc/docker/daemon.json, add registry ip and port:
 
 ### https registry (self-signed or not)
 
-create certificate (self-signed)
+Create certificate (self-signed)
 >> mkdir -p certs
 >> openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/registry.key -addext "commonName = 10.1.1.133" -x509 -days 365 -out certs/registry.crt
 
-copy registry certificate to /etc/docker/certs.d/ using the ip and port number in the folder and filename (use \: to escape the semicolon for the port)
->> /etc/docker/certs.d/1.1.1.1\:5000/registry.crt
-
-or pass it via command line
+And pass it via command line on the host that runs the registry
 >> docker run -d -p 5000:5000 --restart=always --name registry \
 >> -v "$(pwd)"/certs:/certs \
 >> -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.crt \
 >> -e REGISTRY_HTTP_TLS_KEY=/certs/registry.key \
 >> registry:2
+
+On every host, copy registry certificate to /etc/docker/certs.d/ using the ip and port number in the folder and filename (use \: to escape the semicolon for the port)
+>> /etc/docker/certs.d/1.1.1.1\:5000/registry.crt
 
 
 ### http auth
@@ -83,7 +85,7 @@ Create password hash file
 >> mkdir -p auth
 >> docker run --entrypoint htpasswd httpd:2 -Bbn testuser testpassword > auth/htpasswd
 
-Start the service
+Start the registry service
 >> docker run -d -p 5000:5000 --restart=always --name registry \
 >>   -v "$(pwd)"/auth:/auth \
 >>   -e "REGISTRY_AUTH=htpasswd" -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
@@ -91,6 +93,8 @@ Start the service
 >>   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.crt \
 >>   -e REGISTRY_HTTP_TLS_KEY=/certs/registry.key \
 >>   registry:2
+
+To deploy a docker service or stack use "--with-registry-auth", e.g. "docker stack deploy --with-registry-auth -c mystack.yml mystack"
 
 
 ## swarm
